@@ -1,0 +1,29 @@
+{
+  "name": "frontend_electron_react",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Electron + React (Vite) frontend that displays backend /hello response.",
+  "main": "electron/main.cjs",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "electron:dev": "node electron/start-dev.cjs",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "electron:build": "npm run build && electron-builder --dir"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^32.2.7",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7",
+    "wait-on": "^7.2.0"
+  }
+}
