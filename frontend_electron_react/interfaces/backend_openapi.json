@@ -1,24 +1,84 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "FastAPI",
+    "title": "Fullstack API Viewer Backend",
+    "description": "FastAPI backend for the Fullstack API Viewer project.\n\nThe Electron/React frontend calls `GET /hello` to display a simple JSON response.",
     "version": "0.1.0"
   },
+  "tags": [
+    {
+      "name": "Health",
+      "description": "Health and status endpoints."
+    },
+    {
+      "name": "Hello",
+      "description": "Demo endpoints used by the Electron/React frontend."
+    }
+  ],
   "paths": {
     "/": {
       "get": {
-        "summary": "Health Check",
-        "operationId": "health_check__get",
+        "tags": [
+          "Health"
+        ],
+        "summary": "Health check",
+        "operationId": "health_check",
         "responses": {
           "200": {
             "description": "Successful Response",
             "content": {
               "application/json": {
-                "schema": {}
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object",
+                  "title": "Response Health Check  Get"
+                }
               }
             }
           }
         }
+      }
+    },
+    "/hello": {
+      "get": {
+        "tags": [
+          "Hello"
+        ],
+        "summary": "Hello World",
+        "operationId": "get_hello",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HelloResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HelloResponse": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "description": "A friendly greeting from the API."
+          }
+        },
+        "type": "object",
+        "required": [
+          "message"
+        ],
+        "title": "HelloResponse",
+        "description": "Response payload for the Hello World endpoint."
       }
     }
   }
