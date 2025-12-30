@@ -19,7 +19,11 @@ The renderer resolves the API base URL in this order:
 2) `process.env.API_BASE_URL`  
 3) Fallback: `http://localhost:3010`
 
-To point at the preview backend, set `API_BASE_URL` to the backend URL (without `/docs`), for example:
+Notes:
+- In **web preview** (Vite in a browser), only `VITE_*` variables are injected into the client bundle by default. If you need to override the URL in web preview, use `VITE_API_BASE_URL` (see `.env.example`).
+- In **Electron**, you can also inject `window.env.API_BASE_URL` via a preload/injected script.
+
+To point at the preview backend, set the base URL to the backend origin (without `/docs`), for example:
 - `https://<preview-host>:3010`
 
 ## Run (web preview)
