@@ -88,7 +88,7 @@ export default function App() {
                   Tip: set <code className="inlineCode">window.env.API_BASE_URL</code> or <code className="inlineCode">API_BASE_URL</code> to the backend URL.
                 </div>
               </div>
-            ) : (
+            ) : state.status === "success" ? (
               <>
                 <div className="successRow">
                   <span className="pill">Success</span>
@@ -96,7 +96,7 @@ export default function App() {
                 </div>
                 <pre className="jsonBlock">{JSON.stringify(state.data, null, 2)}</pre>
               </>
-            )}
+            ) : null}
           </div>
 
           <div className="cardFooter">
